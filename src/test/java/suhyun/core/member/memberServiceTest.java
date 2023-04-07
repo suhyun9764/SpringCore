@@ -1,11 +1,18 @@
 package suhyun.core.member;
 
 import org.assertj.core.api.Assertions;
+import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
+import suhyun.core.AppConfig;
 
 public class memberServiceTest {
 
-    MemberService memberService = new MemberServiceImpl();
+    MemberService memberService;
+    @BeforeEach
+    public void beforEach(){
+        AppConfig appConfig = new AppConfig();
+        memberService = appConfig.memberService();
+    }
     @Test
     void join(){
 

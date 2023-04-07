@@ -1,14 +1,17 @@
 package suhyun.core;
 
-import suhyun.core.member.Grade;
-import suhyun.core.member.Member;
-import suhyun.core.member.MemberService;
-import suhyun.core.member.MemberServiceImpl;
+import org.springframework.context.ApplicationContext;
+import org.springframework.context.annotation.AnnotationConfigApplicationContext;
+import suhyun.core.member.*;
 
 public class MemberApp {
 
     public static void main(String[] args) {
-        MemberService memberService = new MemberServiceImpl();
+     //   AppConfig appConfig = new AppConfig();
+     //   MemberService memberService = appConfig.memberService();
+
+        ApplicationContext applicationContext = new AnnotationConfigApplicationContext(AppConfig.class);
+        MemberService memberService = applicationContext.getBean("memberService", MemberService.class);
         Member member = new Member(1L, "memberA",Grade.vip);
         memberService.join(member);
 

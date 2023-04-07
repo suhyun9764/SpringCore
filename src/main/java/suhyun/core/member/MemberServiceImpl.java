@@ -2,7 +2,12 @@ package suhyun.core.member;
 
 public class MemberServiceImpl implements MemberService{
 
-    MemberRepository memberRepository = new MemoryMemberRepository();
+    MemberRepository memberRepository;
+
+    public MemberServiceImpl(MemberRepository memberRepository) {
+        this.memberRepository = memberRepository;
+    }
+
     @Override
     public void join(Member member) {
         memberRepository.save(member);
