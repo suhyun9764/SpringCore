@@ -1,15 +1,21 @@
 package suhyun.core.order;
 
+import lombok.RequiredArgsConstructor;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Qualifier;
+import org.springframework.stereotype.Component;
 import suhyun.core.discount.DiscountPolicy;
 import suhyun.core.discount.FixDiscountPolicy;
 import suhyun.core.member.Member;
 import suhyun.core.member.MemberRepository;
 import suhyun.core.member.MemoryMemberRepository;
 
+@Component
+
 public class OrderServiceImpl implements OrderService{
 
     private final MemberRepository memberRepository;
-    private final DiscountPolicy discountPolicy;
+    private final  DiscountPolicy discountPolicy;
 
     public OrderServiceImpl(MemberRepository memberRepository, DiscountPolicy discountPolicy) {
         this.memberRepository = memberRepository;
@@ -27,4 +33,6 @@ public class OrderServiceImpl implements OrderService{
     public MemberRepository getMemberRepository() {
         return memberRepository;
     }
+
+
 }
